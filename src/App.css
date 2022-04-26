@@ -35,3 +35,6 @@
   border: none;
   background-image: linear-gradient(-255deg, #C0C0C0 0%, #E0E0E0 30%, white 100%);
 }
+.coin-otsikot{
+ background-color: aquamarine;
+}

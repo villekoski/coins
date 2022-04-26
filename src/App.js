@@ -7,7 +7,7 @@ import Coin from './Coin';
 function App() {
 const [coins, setCoins] = useState([])
 const [haku, setHaku] = useState('')
-
+const nimet = ["Nimi ","ID ", "Hinta ", "Volume ", "24h muutos ", "Cap "]
 
 useEffect(() => {
   axios
@@ -22,18 +22,30 @@ const handleChange = e => {
   setHaku(e.target.value)
 }
 
+const Otsikot = (props) => {
+  console.log(props)
+ const mapatutNimet = nimet.map(nimi => nimi.toLowerCase())
+  return(
+    <div className='coin-otsikot'>{mapatutNimet} </div>
+  )
+}
+
 const filteredCoins = coins.filter(coin =>
-  coin.name.toLowerCase().includes(haku.toLowerCase())
+  coin.name.toLowerCase().includes(haku.toLowerCase()),
+ 
   )
 
   return (
     <div className="coin-app">
       <div className='coin-haku'>
         <h1 className='coin-teksti'>Etsi valuuttoja</h1>
+      
           <form>
             <input type='text' placeholder='Haku'
             className='coin-syote' onChange={handleChange}/>
           </form>
+
+          <Otsikot nimet={nimet} />
       </div>
       {filteredCoins.map(coin => {
         return(
